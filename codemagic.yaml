@@ -1,0 +1,30 @@
+workflows:
+  default-workflow:
+    name: Default Workflow
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        PROJECT_NAME: "flutter_app"
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter packages get
+      - name: Run tests
+        script: |
+          flutter test
+      - name: Build APK
+        script: |
+          Flutter version 3.19.6
+      - name: Build iOS
+        script: |
+          Flutter version 3.19.6 --no-codesign
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+      - build/ios/iphoneos/Runner.app
+    publishing:
+      email:
+        recipients:
+          - wndhafa@gmail.com
+
